@@ -116,6 +116,7 @@ noremap <Left> <Nop>
 noremap <Right> <Nop>
 
 nmap <leader>t :Denite file_rec<CR>
+
 map <leader>h :%s///<left><left>
 nmap <silent> <leader>/ :nohlsearch<CR>
 
@@ -123,23 +124,11 @@ nmap <silent> <leader>/ :nohlsearch<CR>
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 try
-" === Denite setup ==="
-" Use ripgrep for searching current directory for files
-" By default, ripgrep will respect rules in .gitignore
-"   --files: Print each file that would be searched (but don't search)
-"   --glob:  Include or exclues files for searching that match the given glob
-"            (aka ignore .git files)
-"
 call denite#custom#var('file_rec', 'command', ['rg', '--files', '--glob', '!.git'])
 
 " Use ripgrep in place of "grep"
 call denite#custom#var('grep', 'command', ['rg'])
 
-" Custom options for ripgrep
-"   --vimgrep:  Show results with every match on it's own line
-"   --hidden:   Search hidden directories and files
-"   --heading:  Show the file name above clusters of matches from each file
-"   --S:        Search case insensitively if the pattern is all lowercase
 call denite#custom#var('grep', 'default_opts', ['--hidden', '--vimgrep', '--heading', '-S'])
 
 " Recommended defaults for ripgrep via Denite docs
@@ -171,6 +160,11 @@ let s:denite_options = {'default' : {
 \ 'highlight_matched_char': 'Function',
 \ 'highlight_matched_range': 'Normal'
 \ }}
+
+call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
+call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
+call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
 
 " Loop through denite options and enable them
 function! s:profile(opts) abort
