@@ -15,6 +15,11 @@ fo() {
   [[ -n "$files" ]] && ${EDITOR:-vim} "${files[@]}"
 }
 
+# use fzf to find .circleci config files in pwd
+foc() {
+    vim $(rg --files --iglob ".circleci" -g "config.y*" | fzf)
+}
+
 # fh [FUZZY PATTERN] - Search in command history
 fh() {
   print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
