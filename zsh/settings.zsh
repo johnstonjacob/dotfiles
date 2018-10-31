@@ -5,6 +5,6 @@ alias python="python3"
 export GO111MODULE=on
 export GOPATH=$HOME/go
 
-. /Users/jake/devel/bin/z.sh
+. /Users/jacob/devel/bin/z.sh
 
 bindkey -v
