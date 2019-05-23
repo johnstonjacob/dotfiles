@@ -25,6 +25,9 @@ set clipboard=unnamed
 set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
 set backspace=2
 
+" remove EOL whitespace
+autocmd BufWritePre * %s/\s\+$//e
+
 
 " save files opened in readonly mode
 cmap w!! w !sudo tee %
@@ -40,9 +43,6 @@ set directory^=$HOME/.vim/tmp//
 
 " plugin manager and fuzzy file searching
 set rtp+=/usr/local/opt/fzf
-
-let g:go_fmt_command = "goimports"
-let g:syntastic_yaml_checkers = ['yamllint']
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -84,8 +84,10 @@ else
     Plug 'roxma/vim-hug-neovim-rpc'
 endif
 let g:deoplete#enable_at_startup = 1
+let g:go_fmt_command = "goimports"
 
 Plug 'chr4/nginx.vim'
+Plug 'hashivim/vim-terraform'
 
 call plug#end()
 
@@ -104,7 +106,7 @@ let g:material_terminal_italics = 1
 
 " set color scheme
 set background=dark
-colorscheme material 
+colorscheme material
 
 au BufNewFile,BufRead *.vue setf vue
 
@@ -120,7 +122,7 @@ nmap <leader>t :Denite file_rec<CR>
 map <leader>h :%s///<left><left>
 nmap <silent> <leader>/ :nohlsearch<CR>
 
-" tab complete and cycle 
+" tab complete and cycle
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 try
