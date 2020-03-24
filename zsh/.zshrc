@@ -1,6 +1,8 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+ZSH_DISABLE_COMPFIX=true
+
 alias vim="/usr/local/bin/nvim"
 export PATH=/usr/local/bin:$PATH
 
@@ -100,9 +102,9 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
+# Set Spaceship ZSH as a prompt
+#autoload -U promptinit; promptinit
+#prompt spaceship
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`

@@ -1,6 +1,6 @@
 # Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
+#autoload -U promptinit; promptinit
+#prompt spaceship
 
 SPACESHIP_PROMPT_ORDER=(
   time          # Time stamps section
