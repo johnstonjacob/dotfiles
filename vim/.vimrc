@@ -22,12 +22,16 @@ let mapleader=','
 " use system clipboard
 set clipboard=unnamed
 
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
+set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 set backspace=2
 
 " remove EOL whitespace
-autocmd BufWritePre * %s/\s\+$//e
+" autocmd BufWritePre * %s/\s\+$//e
 
+" add yaml stuff
+au! BufNewFile,BufReadPost *.{yaml,yml} set filetype=yaml foldmethod=indent
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+set indentkeys-=0#
 
 " save files opened in readonly mode
 cmap w!! w !sudo tee %
@@ -49,12 +53,81 @@ call plug#begin('~/.config/nvim/plugged')
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 
+" python venv
+"let g:python_host_prog="/usr/bin/python"
+let g:python3_host_prog = '/Users/jjohnston/Documents/dev/venv/py3nvim/bin/python'
+
+autocmd BufWritePre *.py execute ':Black'
+
+Plug 'dannyob/quickfixstatus'
+Plug 'hashivim/vim-hashicorp-tools'
+Plug 'jvirtanen/vim-hcl'
+
+" writing
+Plug 'junegunn/limelight.vim'
+Plug 'junegunn/goyo.vim'
+Plug 'dbmrq/vim-ditto'
+
+" Use autocmds to check your text automatically and keep the highlighting
+" up to date (easier):
+au FileType markdown,text,tex DittoOn  " Turn on Ditto's autocmds
+nmap <leader>di <Plug>ToggleDitto      " Turn Ditto on and off
+
+" If you don't want the autocmds, you can also use an operator to check
+" specific parts of your text:
+" vmap <leader>d <Plug>Ditto	       " Call Ditto on visual selection
+" nmap <leader>d <Plug>Ditto	       " Call Ditto on operator movement
+
+nmap =d <Plug>DittoNext                " Jump to the next word
+nmap -d <Plug>DittoPrev                " Jump to the previous word
+nmap +d <Plug>DittoGood                " Ignore the word under the cursor
+nmap _d <Plug>DittoBad                 " Stop ignoring the word under the cursor
+nmap ]d <Plug>DittoMore                " Show the next matches
+nmap [d <Plug>DittoLess                " Show the previous matches
+
+function Writing()
+    echom "Write stuff"
+    execute "Goyo"
+    execute "ALEDisable"
+    execute "Limelight"
+    execute "NoDitto"
+endfunction
+
+function StopWriting()
+    execute "Goyo"
+    execute "ALEEnable"
+    execute "Limelight!"
+    execute "Ditto"
+endfunction
+
+let g:writing = 0
+
+function! ToggleWriting()
+    if g:writing
+        call StopWriting()
+        let g:writing = 0
+    else
+        call Writing()
+        let g:writing = 1
+    endif
+endfunction
+
+nmap <C-y> :call ToggleWriting() <cr>
+
 " use <C-hjkl> for movement between vim and tmux
 Plug 'christoomey/vim-tmux-navigator'
 
 Plug 'Shougo/denite.nvim'
 
+Plug 'numirias/semshi'
+"Plug 'psf/black'
+Plug 'psf/black', { 'tag': '19.10b0' }
+
 Plug 'fatih/vim-go'
+
+Plug 'mrk21/yaml-vim'
+
+Plug 'tpope/vim-surround'
 
 Plug 'scrooloose/nerdtree'
 
@@ -71,6 +144,8 @@ Plug 'prettier/vim-prettier'
 Plug 'posva/vim-vue'
 
 Plug 'w0rp/ale'
+
+Plug 'reedes/vim-litecorrect'
 
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
