@@ -55,9 +55,7 @@ let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
 
 " python venv
 "let g:python_host_prog="/usr/bin/python"
-let g:python3_host_prog = '/Users/jjohnston/Documents/dev/venv/py3nvim/bin/python'
-
-autocmd BufWritePre *.py execute ':Black'
+"let g:python3_host_prog = '/Users/jjohnston/Documents/dev/venv/py3nvim/bin/python'
 
 Plug 'dannyob/quickfixstatus'
 Plug 'hashivim/vim-hashicorp-tools'
@@ -121,7 +119,7 @@ Plug 'Shougo/denite.nvim'
 
 Plug 'numirias/semshi'
 "Plug 'psf/black'
-Plug 'psf/black', { 'tag': '19.10b0' }
+"Plug 'psf/black', { 'tag': '19.10b0' }
 
 Plug 'fatih/vim-go'
 

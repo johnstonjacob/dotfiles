@@ -4,9 +4,8 @@
 ZSH_DISABLE_COMPFIX=true
 
 export EDITOR='nvim'
-alias vim="/usr/local/bin/nvim"
+alias vim="/opt/homebrew/bin/nvim"
 export PATH=/usr/local/bin:$PATH
-export GOOGLE_APPLICATION_CREDENTIALS="~/.bertha/keys.json"
 export ABDW_CONNECTION_METHOD="external_ip"
 
 # Path to your oh-my-zsh installation.

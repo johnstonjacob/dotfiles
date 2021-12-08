@@ -3,6 +3,5 @@ export GOPATH=$HOME/go
 export PATH=$PATH:$HOME/go/bin
 
 
-. /Users/$(whoami)/Documents/dev/bin/z/z.sh
-
+. /opt/homebrew/etc/profile.d/z.sh
 bindkey -v
