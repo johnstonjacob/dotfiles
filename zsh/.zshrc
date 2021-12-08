@@ -1,8 +1,12 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-alias vim="/usr/local/bin/nvim"
+ZSH_DISABLE_COMPFIX=true
+
+export EDITOR='nvim'
+alias vim="/opt/homebrew/bin/nvim"
 export PATH=/usr/local/bin:$PATH
+export ABDW_CONNECTION_METHOD="external_ip"
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/$(whoami)/.oh-my-zsh
@@ -100,9 +104,9 @@ export SSH_KEY_PATH="~/.ssh/rsa_id"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-  # Set Spaceship ZSH as a prompt
-  autoload -U promptinit; promptinit
-  prompt spaceship
+# Set Spaceship ZSH as a prompt
+#autoload -U promptinit; promptinit
+#prompt spaceship
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`

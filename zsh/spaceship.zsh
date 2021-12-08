@@ -1,6 +1,6 @@
 # Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
+#autoload -U promptinit; promptinit
+#prompt spaceship
 
 SPACESHIP_PROMPT_ORDER=(
   time          # Time stamps section
@@ -27,7 +27,7 @@ SPACESHIP_PROMPT_ORDER=(
   pyenv         # Pyenv section
   dotnet        # .NET section
   ember         # Ember.js section
-  #kubecontext   # Kubectl context section
+  kubecontext       # Kubectl context section
   exec_time     # Execution time
   line_sep      # Line break
   battery       # Battery level and status
